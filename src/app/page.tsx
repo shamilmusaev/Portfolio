@@ -1,4 +1,4 @@
-import me from "@/assets/me.png";
+import me from "@/assets/me.jpg";
 import { H1 } from "@/components/ui/H1";
 import { H2 } from "@/components/ui/H2";
 import { Bot } from "lucide-react";
@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Shamil Musaev - Next.JS Portfolio and AI chatbot",
+  title: "Shamil Musaev - Portfolio and AI chatbot",
 };
 
 export default function Home() {
@@ -23,9 +23,11 @@ export default function Home() {
         <div className="flex justify-center">
           <Image
             src={me}
+            quality={100}
             alt="A photo of me"
             height={300}
             width={300}
+            sizes="(100vw, 100vh)"
             className="aspect-square rounded-full border-2 object-cover shadow-md dark:border-foreground"
           />
         </div>

@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import type { Metadata } from "next";
@@ -25,8 +25,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class">
           <Navbar />
-          <main className="mx-auto max-w-3xl px-3 py-10 ">{children}</main>
-          <Footer />
+          <main className="mx-auto max-w-4xl px-3 py-10 ">{children}</main>
+          {/* <Footer /> */}
         </ThemeProvider>
       </body>
     </html>
