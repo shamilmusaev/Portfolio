@@ -1,39 +1,69 @@
+"use client";
+
 import { H1 } from "@/components/ui/H1";
-import { H2 } from "@/components/ui/H2";
-import { Metadata } from "next";
+
 // import Image from "next/image";
 import me from "@/assets/me.jpg";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "About Me",
-  description: "Learn more about Florian Walther and his work.",
-};
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Page() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useEffect(() => {
+    // Предполагая, что у вас есть абзацы с классом "scroll-text"
+    document.querySelectorAll(".scroll-text").forEach((elem) => {
+      gsap.fromTo(
+        elem,
+        { color: "#666rrr" }, // Изначальный цвет (серый)
+        {
+          color: "#000", // Конечный цвет (черный)
+          scrollTrigger: {
+            trigger: elem,
+            start: "top center+=100", // Начало изменения немного до достижения центра экрана
+            end: "bottom top", // Заканчиваем изменение, когда элемент уходит из видимой части
+            toggleActions: "play none none reverse", // Определяем действия на разных стадиях скролла
+            // markers: true, // Раскомментируйте для отладки
+          }
+        }
+      );
+    });
+  }, []);
   return (
     <section className="space-y-6">
       <H1>Hello You</H1>
-      {/* <section className="flex justify-center space-y-3"> */}
+
       <section>
         <div className="w-70 pr-20">
-          <p className="font-medium text-4xl tracking-wide leading-normal mt-20">
-            My name is Shamil, and I&apos;m absolutely in love with
-            bringing projects to life on the internet. My journey kicked off
-            quite unexpectedly when I decided to create a website for our family
-            restaurant back in 2018. That first dive into the world of HTML and
-            CSS, alongside WordPress, marked the beginning of an incredible
+          <p
+            id="text"
+            className="mt-20 text-4xl font-medium leading-normal tracking-wide"
+          >
+            <span className="scroll-text">
+              {" "}
+              My name is Shamil, and I&apos;m absolutely in love with bringing
+              projects to life on the internet. My journey kicked off quite</span>
+              <span className="scroll-text">unexpectedly when I decided
+              to create a website for our family restaurant back in 2018. That
+              first dive into the world of HTML and CSS, alongside WordPress,
+              marked the beginning of an incredible
+            </span>
             adventure. This project ignited a spark in me for web development,
             leading me to further my studies at IT Högskola. <br /> <br />
-            Today, I proudly hold the position of a full-stack developer at
-            Frostlight Solutions, where my work revolves around frontend and AI.
+            <span className="scroll-text">
+              Today, I proudly hold the position of a full-stack developer at
+              Frostlight Solutions, where my work revolves around frontend and
+              AI.
+            </span>
             My mission? To make high technology clear and accessible to
             everyone. <br /> <br />
             And guess what? I also recently completed a course on Next.JS, where
             I developed a project that enables people to find or list homes for
             rent. It was a real challenge and a thrill to apply new knowledge.
-          </p> <br />
-
+          </p>{" "}
+          <br />
           <ul>
             <li>- HTML, CSS, JavaScript (ES6+)</li>
             <li>- React & Next.JS</li>
