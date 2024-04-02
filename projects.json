@@ -1,0 +1,15 @@
+[
+  {
+    "id": "project1",
+    "title": "Название проекта 1",
+    "description": "Краткое описание проекта 1",
+    "imageUrl": "/path/to/image.jpg"
+  },
+
+  {
+    "id": "project2",
+    "title": "Название проекта 2",
+    "description": "Краткое описание проекта 2",
+    "imageUrl": "/path/to/image.jpg"
+  }
+]
