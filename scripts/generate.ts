@@ -1,6 +1,6 @@
 //npm run generate = Для того чтобы загрузить данные с сайта в базу данных ИИ
-import dotenv from "dotenv"
-dotenv.config({path : ".env.local"})
+import dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
 //Configure dotenv before other imports
 import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { TextLoader } from "langchain/document_loaders/fs/text";
@@ -9,9 +9,8 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { getEmbeddingsCollection, getVectorStore } from "../src/lib/astradb";
 import { Redis } from "@upstash/redis";
 
-
 async function generateEmbeddings() {
-  await Redis.fromEnv().flushdb()
+  await Redis.fromEnv().flushdb();
   const vectorStore = await getVectorStore();
   (await getEmbeddingsCollection()).deleteMany({});
 
@@ -19,12 +18,13 @@ async function generateEmbeddings() {
     "src/app/",
     {
       ".tsx": (path) => new TextLoader(path),
+      ".jsx": (path) => new TextLoader(path),
     },
     true,
   );
 
   const docs = (await loader.load())
-    .filter((doc) => doc.metadata.source.endsWith("page.tsx"))
+    .filter((doc) => /page\.(tsx|jsx)$/.test(doc.metadata.source)) // Измененный фильтр
     .map((doc): DocumentInterface => {
       const url =
         doc.metadata.source
