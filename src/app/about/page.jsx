@@ -40,7 +40,7 @@ export default function Page() {
     return () => {
       reveal.kill();
     };
-  }, []);
+  },);
 
   const paragraph_1 = `My name is Shamil, and I'm absolutely in love with bringing projects to life on the internet. `;
   const paragraph_2 = `My journey kicked off quite unexpectedly when I decided to create a website for our family restaurant back in 2018. That first dive into the world of HTML and CSS, alongside WordPress, marked the beginning of an incredible adventure.`;
