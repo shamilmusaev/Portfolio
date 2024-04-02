@@ -2,9 +2,10 @@
 
 import { animatePageIn } from "@/utils/animations";
 import { useEffect } from "react";
+import { useGSAP } from "@gsap/react";
 
 export default function Template({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
+  useGSAP(() => {
     animatePageIn();
   }, []);
 
